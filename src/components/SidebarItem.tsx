@@ -10,6 +10,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 type Props = {
   Icon: React.ReactNode;
@@ -24,7 +26,7 @@ type Props = {
 const SidebarItem: FC<Props> = ({ Icon, title, path, route }) => {
   const location = useLocation();
   const navigate = useNavigate();
-
+  const isCollapsed = useSelector<RootState>((s) => s.sidebar.isCollapsed);
   const handleClick = () => {
     navigate(path || "/");
   };
@@ -33,7 +35,7 @@ const SidebarItem: FC<Props> = ({ Icon, title, path, route }) => {
     <div>
       {/* ICON */}
       {/* NAME */}
-      <AccordionItem value={title || "title"}>
+      <AccordionItem key={title} value={title || "title"}>
         <AccordionTrigger
           handleClick={handleClick}
           path={path}
@@ -41,6 +43,7 @@ const SidebarItem: FC<Props> = ({ Icon, title, path, route }) => {
           Icon={Icon}
           title={title}
           includeChildren={route.children?.length > 0}
+          isCollapsed={isCollapsed}
         ></AccordionTrigger>
         {route?.children?.length > 0 && (
           <AccordionContent className="p-2">
@@ -48,7 +51,7 @@ const SidebarItem: FC<Props> = ({ Icon, title, path, route }) => {
               route.children?.map((child) => (
                 <SidebarItem
                   Icon={child.Icon}
-                  title={child?.title}
+                  title={isCollapsed ? "" : child?.title}
                   path={child.path}
                   key={child.path}
                   route={child}

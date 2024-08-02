@@ -6,6 +6,12 @@ import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./tooltip";
 
 const Accordion = AccordionPrimitive.Root;
 const AccordionItem = React.forwardRef<
@@ -39,20 +45,34 @@ const AccordionTrigger = React.forwardRef<
       )}
       {...props}
     >
-      <div className="flex items-center">
-        <div className={`${props.path === location.pathname && "text-white "}`}>
-          {props.Icon}
-        </div>
-        <p
-          className={`${
-            props.path === props.location.pathname && "text-white "
-          }`}
-        >
-          {props.title}
-        </p>
-      </div>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div className="flex items-center">
+              <div
+                className={`${
+                  props.path === location.pathname && "text-primary-foreground "
+                }`}
+              >
+                {props.Icon}
+              </div>
+              <p
+                className={`${
+                  props.path === props.location.pathname &&
+                  "text-primary-foreground"
+                }`}
+              >
+                {props.isCollapsed ? "" : props.title}
+              </p>
+            </div>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p className="text-primary">{props.title}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
 
-      {props.includeChildren && (
+      {!props.isCollapsed && props.includeChildren && (
         <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 text-gray-500" />
       )}
     </AccordionPrimitive.Trigger>

@@ -4,79 +4,81 @@ import NotFound from "@/components/NotFound";
 import { ReactNode } from "react";
 import IconsRoutes from "./IconsRoutes";
 import Attendance from "@/pages/Attendance";
+import Empoloyee from "@/pages/Employee";
+import EmployeeAdd from "@/pages/Employee/add";
 
 export type RoutesProps = RouteObject & {
   title?: string;
   Icon?: ReactNode;
+  ignoreInSideBar?: boolean;
   children?: RoutesProps[];
 };
 
 const routes: RoutesProps[] = [
   {
     path: "/",
-    element: Dashboard(),
+    element: <Dashboard />,
     title: "Dashboard",
     Icon: IconsRoutes["Dashboard"],
   },
   {
     path: "/attendance",
-    element: Attendance(),
+    element: <Attendance />,
     title: "Attendance",
     Icon: IconsRoutes["Attendance"],
-    children: [
-      {
-        path: "/attendance/users",
-        element: Attendance(),
-        title: "Users",
-        Icon: IconsRoutes["Attendance"],
-      },
-    ],
   },
   {
     path: "/award",
-    element: Attendance(),
+    element: <Attendance />,
     title: "Award",
     Icon: IconsRoutes["Award"],
   },
   {
     path: "/department",
-    element: Attendance(),
+    element: <Attendance />,
     title: "Department",
     Icon: IconsRoutes["Department"],
   },
   {
     path: "/employee",
-    element: Attendance(),
+    element: <Empoloyee />,
     title: "Employee",
     Icon: IconsRoutes["Employee"],
   },
   {
+    path: "/employee/new",
+    element: <EmployeeAdd />,
+    title: "Add Employee",
+    Icon: IconsRoutes["Employee"],
+    ignoreInSideBar: true,
+  },
+  {
     path: "/leave",
-    element: Attendance(),
+    element: <Attendance />,
     title: "Leave",
     Icon: IconsRoutes["Leave"],
   },
   {
     path: "/loan",
-    element: Attendance(),
+    element: <Attendance />,
     title: "Loan",
     Icon: IconsRoutes["Loan"],
   },
   {
     path: "/notification",
-    element: Attendance(),
+    element: <Attendance />,
     title: "Notification",
     Icon: IconsRoutes["Notification"],
   },
   {
     path: "/reports",
-    element: Attendance(),
+    element: <Attendance />,
     title: "Reports",
     Icon: IconsRoutes["Reports"],
   },
   {
     path: "/settings",
-    element: Attendance(),
+    element: <Attendance />,
     title: "Settings",
     Icon: IconsRoutes["Settings"],
   },
@@ -84,6 +86,7 @@ const routes: RoutesProps[] = [
   {
     path: "*",
     element: NotFound(),
+    ignoreInSideBar: true,
   },
 ];
 
