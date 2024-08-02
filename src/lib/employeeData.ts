@@ -7,25 +7,6 @@ interface Address {
   postalCode: string;
 }
 
-interface EmergencyContact {
-  name: string;
-  relationship: string;
-  phoneNumber: string;
-}
-
-interface Salary {
-  amount: number;
-  currency: string;
-  effectiveDate: Date;
-}
-
-interface PerformanceReview {
-  date: Date;
-  score: number;
-  comments: string;
-  reviewer: string;
-}
-
 export interface EmployeeInterface {
   // Personal Information
   id: string;
@@ -91,41 +72,6 @@ export interface EmployeeInterface {
 }
 
 export const generateEmployees = (count: number): EmployeeInterface[] => {
-  const departments = [
-    "Engineering",
-    "Marketing",
-    "Sales",
-    "Human Resources",
-    "Finance",
-  ];
-  const positions = [
-    "Manager",
-    "Senior Developer",
-    "Junior Developer",
-    "Designer",
-    "Analyst",
-    "Coordinator",
-  ];
-  const skills = [
-    "JavaScript",
-    "Python",
-    "React",
-    "Node.js",
-    "SQL",
-    "GraphQL",
-    "AWS",
-    "Docker",
-    "Kubernetes",
-  ];
-  const languages = [
-    "English",
-    "Spanish",
-    "French",
-    "German",
-    "Chinese",
-    "Japanese",
-  ];
-
   return Array.from({ length: count }, (_, i) => ({
     id: uuidv4(),
     firstName: `FirstName${i + 1}`,

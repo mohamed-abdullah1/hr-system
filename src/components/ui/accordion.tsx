@@ -31,7 +31,7 @@ type PropsTypes = {
   path?: string;
   Icon?: React.ReactNode;
   location: any;
-  isCollapsed?: boolean;
+  isCollapsed?: any;
   handleClick?: () => void;
   includeChildren?: boolean;
 };

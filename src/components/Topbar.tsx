@@ -1,7 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { ChevronDown, Globe, MenuIcon, MoonStar, SunMoon } from "lucide-react";
-import { useState } from "react";
 
 import {
   DropdownMenu,

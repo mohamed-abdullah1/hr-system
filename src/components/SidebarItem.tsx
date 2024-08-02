@@ -1,9 +1,4 @@
-import {
-  RouteObject,
-  RoutesProps,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { RouteObject, useLocation, useNavigate } from "react-router-dom";
 import { FC, ReactNode } from "react";
 import {
   AccordionContent,
@@ -12,6 +7,7 @@ import {
 } from "./ui/accordion";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
+import { RoutesProps } from "@/routes";
 
 type Props = {
   Icon: React.ReactNode;
@@ -30,7 +26,7 @@ const SidebarItem: FC<Props> = ({ Icon, title, path, route }) => {
   const handleClick = () => {
     navigate(path || "/");
   };
-
+  const childrenCount = route.children?.length ?? 0;
   return (
     <div>
       {/* ICON */}
@@ -42,13 +38,13 @@ const SidebarItem: FC<Props> = ({ Icon, title, path, route }) => {
           location={location}
           Icon={Icon}
           title={title}
-          includeChildren={route.children?.length > 0}
+          includeChildren={childrenCount > 0}
           isCollapsed={isCollapsed}
         ></AccordionTrigger>
-        {route?.children?.length > 0 && (
+        {childrenCount > 0 && (
           <AccordionContent className="p-2">
-            {route.children?.length > 0 &&
-              route.children?.map((child) => (
+            {childrenCount > 0 &&
+              route.children?.map((child: RoutesProps) => (
                 <SidebarItem
                   Icon={child.Icon}
                   title={isCollapsed ? "" : child?.title}
