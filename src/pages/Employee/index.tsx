@@ -8,13 +8,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useState } from "react";
 
 export default function DemoPage() {
   // const employees = generateEmployees(4);
   const employees = generateEmployees(20);
   console.log("🔥✨ ", { employees });
-  const [columnFilters, setColumnFilters] = useState([]);
   return (
     <Card className="w-full h-full ">
       <CardHeader>
