@@ -26,9 +26,18 @@ const AccordionItem = React.forwardRef<
 ));
 AccordionItem.displayName = "AccordionItem";
 
+type PropsTypes = {
+  title?: string;
+  path?: string;
+  Icon?: React.ReactNode;
+  location: any;
+  isCollapsed?: boolean;
+  handleClick?: () => void;
+  includeChildren?: boolean;
+};
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> & PropsTypes
 >(({ className, children, ...props }, ref) => (
   <Button
     onClick={props.handleClick}
