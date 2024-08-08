@@ -5,9 +5,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { RoutesProps } from "@/routes";
+import { toggleSidebar } from "@/store/slices/sidebarSlice";
 
 type Props = {
   Icon: React.ReactNode;
@@ -23,8 +24,10 @@ const SidebarItem: FC<Props> = ({ Icon, title, path, route }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const isCollapsed = useSelector<RootState>((s) => s.sidebar.isCollapsed);
+  const dispatch = useDispatch();
   const handleClick = () => {
     navigate(path || "/");
+    dispatch(toggleSidebar());
   };
   const childrenCount = route.children?.length ?? 0;
   return (

@@ -4,14 +4,10 @@ import {
   ChevronDown,
   Globe,
   LogOut,
-  Mail,
   MenuIcon,
-  MessageSquare,
   MoonStar,
-  PlusCircle,
   SunMoon,
   User,
-  UserPlus,
 } from "lucide-react";
 
 import {
@@ -103,25 +99,27 @@ const Topbar = () => {
           {/* AVATAR */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <div
-                className={`flex lg:flex gap-2 items-center ${
-                  !isCollapsed && "hidden lg:flex"
-                }`}
-              >
-                <Avatar>
-                  <AvatarImage
-                    src="https://github.com/shadcn.png"
-                    alt="@shadcn"
-                  />
-                  <AvatarFallback className="border p-4">ME</AvatarFallback>
-                </Avatar>
-                {/* name , title */}
-                <div className="flex flex-col gap-[-10px]">
-                  <p className="text-sm lg:text-lg font-bold">Mohamed</p>
-                  <p className="text-sm lg:text-lg ">Admin, Company 1</p>
+              <Button variant={"ghost"}>
+                <div
+                  className={`flex lg:flex gap-2 items-center ${
+                    !isCollapsed && "hidden lg:flex"
+                  }`}
+                >
+                  <Avatar>
+                    <AvatarImage
+                      src="https://github.com/shadcn.png"
+                      alt="@shadcn"
+                    />
+                    <AvatarFallback className="border p-4">ME</AvatarFallback>
+                  </Avatar>
+                  {/* name , title */}
+                  <div className="flex flex-col gap-[-10px]">
+                    <p className="text-sm lg:text-lg font-bold">Mohamed</p>
+                    <p className="text-sm lg:text-lg ">Admin, Company 1</p>
+                  </div>
+                  <ChevronDown className="text-gray-500" />
                 </div>
-                <ChevronDown className="text-gray-500" />
-              </div>
+              </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-[200px] ">
               <DropdownMenuItem

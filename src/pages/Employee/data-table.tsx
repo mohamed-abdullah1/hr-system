@@ -22,7 +22,6 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import MainButton from "@/components/ui/MainButton";
 import { useNavigate } from "react-router-dom";
 
 interface DataTableProps<TData, TValue> {
