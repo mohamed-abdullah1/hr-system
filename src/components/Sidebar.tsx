@@ -20,8 +20,10 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`px-4 py-2 fixed animate-width ${
-        isCollapsed ? "min-w-[90px] w-[90px]" : "min-w-[300px] w-[300px]"
+      className={`px-4 py-2 fixed animate-width  ${
+        isCollapsed
+          ? "hidden lg:block lg:min-w-[90px] w-[90px]"
+          : "min-w-[300px] w-[300px]"
       }  min-h-screen border bg-secondary`}
     >
       <div

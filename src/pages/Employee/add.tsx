@@ -54,7 +54,7 @@ export default function EmployeeAdd() {
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <div className="flex gap-6">
+            <div className="flex-col lg:flex gap-6 ">
               {/* USER NAME */}
               <FormField
                 control={form.control}
@@ -89,7 +89,11 @@ export default function EmployeeAdd() {
               />
             </div>
 
-            <MainButton content="Create" type="submit" />
+            <MainButton
+              content="Create"
+              type="submit"
+              className="w-full lg:w-fit"
+            />
           </form>
         </Form>
       </CardContent>

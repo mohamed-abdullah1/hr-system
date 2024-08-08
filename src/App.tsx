@@ -22,7 +22,7 @@ const App: React.FC = () => {
           {/* Side bar */}
           <div
             className={`transition-all duration-300 ease-in-out ${
-              isCollapsed ? "min-w-[90px]" : "min-w-[300px]"
+              isCollapsed ? "hidden lg:block lg:min-w-[90px]" : "min-w-[300px]"
             } z-50`}
           >
             <Sidebar />
@@ -35,7 +35,9 @@ const App: React.FC = () => {
             {/* content */}
             <div
               className={`${
-                isCollapsed ? "w-[calc(100vw-90px)]" : "w-[calc(100vw-300px)]"
+                isCollapsed
+                  ? "w-100vw lg:w-[calc(100vw-90px)]"
+                  : "lg:w-[calc(100vw-300px)]"
               } p-4`}
             >
               <AppRoutes />

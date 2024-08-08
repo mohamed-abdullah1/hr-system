@@ -55,27 +55,39 @@ export function DataTable<TData, TValue>({
   const navigate = useNavigate();
   return (
     <div className="">
-      <div className="flex items-center py-4 relative">
-        <Input
-          placeholder="Filter emails..."
-          // value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm pl-10 pr-4 py-2"
-        />
-        <Search
-          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-          size={18}
-        />
-        <div className=" flex flex-1 justify-end gap-2">
-          <MainButton
-            content="Add new Employee"
+      <div className="flex-col  lg:flex items-center py-4 ">
+        {/* search component */}
+        <div className="relative mb-4 lg:mb-0">
+          <Input
+            placeholder="Filter emails..."
+            // value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+            onChange={(event) =>
+              table.getColumn("email")?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm pl-10 pr-4 py-2"
+          />
+          <Search
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            size={18}
+          />
+        </div>
+        {/* add & delete button */}
+        <div className="flex-col  lg:flex lg:flex-1 justify-end gap-2 ">
+          <Button
             onClick={() => {
               navigate("/employee/new");
             }}
-          />
-          <Button variant={"destructive"}>Delete Selected Rows</Button>
+            className="mb-4 lg:mb-0 w-full lg:w-fit"
+            variant={"default"}
+          >
+            Add new employee
+          </Button>
+          <Button
+            className="mb-4 lg:mb-0 w-full lg:w-fit"
+            variant={"destructive"}
+          >
+            Delete Selected Rows
+          </Button>
         </div>
       </div>
       <div className="rounded-md border">

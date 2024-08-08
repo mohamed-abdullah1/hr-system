@@ -43,7 +43,7 @@ const chartData = [
 ];
 const Dashboard = () => {
   return (
-    <div className="grid grid-cols-2 grid-rows-1 gap-4">
+    <div className="max-w-[90vw] grid grid-flow-col-1  lg:grid-cols-2 grid-rows-1 gap-4 ">
       {/* CHART 1 */}
       <Card className="p-2">
         <CardHeader>
@@ -52,7 +52,10 @@ const Dashboard = () => {
             See the performance of your desktop and mobile
           </CardDescription>
         </CardHeader>
-        <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+        <ChartContainer
+          config={chartConfig}
+          className="min-h-[200px] md:w-full"
+        >
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis
