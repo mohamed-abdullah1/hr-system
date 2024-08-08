@@ -25,21 +25,32 @@ import { useTheme } from "./theme-provider";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar } from "@/store/slices/sidebarSlice";
 import { RootState } from "@/store/store";
+import {
+  SIDEBAR_COLLAPSED_WIDTH,
+  SIDEBAR_EXPANDED_WIDTH,
+  TOP_BAR_HEIGHT,
+} from "@/lib/consts";
+import { useNavigate } from "react-router-dom";
 
 const Topbar = () => {
   const { setTheme } = useTheme();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isCollapsed = useSelector<RootState>((s) => s.sidebar.isCollapsed);
   const handleCollapse = () => {
     dispatch(toggleSidebar());
   };
   return (
     <div
-      className={`max-h-[75px] fixed ${
-        isCollapsed ? "w-full lg:w-[calc(100vw-90px)]" : "w-[calc(100vw-300px)]"
+      className={`max-h-[${TOP_BAR_HEIGHT}] fixed ${
+        isCollapsed
+          ? `w-full lg:w-[calc(100vw-${SIDEBAR_COLLAPSED_WIDTH})]`
+          : `w-[calc(100vw-${SIDEBAR_EXPANDED_WIDTH})]`
       } border bg-secondary   z-50`}
     >
-      <div className="flex w-full max-h-[75px]  justify-between items-center px-2 py-4 z-50 ">
+      <div
+        className={`flex w-full max-h-[${TOP_BAR_HEIGHT}]  justify-between items-center px-2 py-4 z-50 `}
+      >
         {/* COLLAPSE BTN FOR SIDE BAR */}
         <Button variant={"ghost"} onClick={handleCollapse}>
           <MenuIcon size={20} />
@@ -99,26 +110,27 @@ const Topbar = () => {
           {/* AVATAR */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant={"ghost"}>
-                <div
-                  className={`flex lg:flex gap-2 items-center ${
-                    !isCollapsed && "hidden lg:flex"
-                  }`}
-                >
-                  <Avatar>
-                    <AvatarImage
-                      src="https://github.com/shadcn.png"
-                      alt="@shadcn"
-                    />
-                    <AvatarFallback className="border p-4">ME</AvatarFallback>
-                  </Avatar>
-                  {/* name , title */}
-                  <div className="flex flex-col gap-[-10px]">
-                    <p className="text-sm lg:text-lg font-bold">Mohamed</p>
-                    <p className="text-sm lg:text-lg ">Admin, Company 1</p>
-                  </div>
-                  <ChevronDown className="text-gray-500" />
+              <Button
+                variant={"ghost"}
+                className={`flex lg:flex gap-2 items-center ${
+                  !isCollapsed && "hidden lg:flex"
+                } h-fit`}
+              >
+                <Avatar>
+                  <AvatarImage
+                    src="https://github.com/shadcn.png"
+                    alt="@shadcn"
+                  />
+                  <AvatarFallback className="border p-4">ME</AvatarFallback>
+                </Avatar>
+                {/* name , title */}
+                <div className="flex flex-col items-start ml-2 gap-[-10px]">
+                  <p className="text-sm lg:text-sm font-bold">
+                    Moh@med Elsayed
+                  </p>
+                  <p className="text-sm lg:text-sm ">Admin, Company 1</p>
                 </div>
+                <ChevronDown className="text-gray-500" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-[200px] ">
@@ -179,7 +191,7 @@ const Topbar = () => {
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 className="cursor-pointer"
-                onClick={() => console.log("🔥✨ ")}
+                onClick={() => navigate("/login")}
               >
                 <LogOut className="mr-2 h-4 w-4" />
                 <span>Logout</span>

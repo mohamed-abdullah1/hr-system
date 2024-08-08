@@ -11,6 +11,7 @@ import { RootState } from "@/store/store";
 import { Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toggleSidebar } from "@/store/slices/sidebarSlice";
+import { SIDEBAR_COLLAPSED_WIDTH, SIDEBAR_EXPANDED_WIDTH } from "@/lib/consts";
 const Sidebar = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
@@ -24,8 +25,8 @@ const Sidebar = () => {
     <div
       className={`px-4 py-2 fixed animate-width  ${
         isCollapsed
-          ? "hidden lg:block lg:min-w-[90px] w-[90px]"
-          : "min-w-[300px] w-[300px]"
+          ? `hidden lg:block lg:min-w-[${SIDEBAR_COLLAPSED_WIDTH}] w-[${SIDEBAR_COLLAPSED_WIDTH}]`
+          : `min-w-[${SIDEBAR_EXPANDED_WIDTH}] w-[${SIDEBAR_EXPANDED_WIDTH}]`
       }  min-h-screen border bg-secondary`}
     >
       <div
