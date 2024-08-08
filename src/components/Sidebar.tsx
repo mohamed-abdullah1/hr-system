@@ -5,14 +5,16 @@ import { Input } from "./ui/input";
 import { useState } from "react";
 import logo from "../../public/logo.svg";
 import logoIcon from "../../public/logo-icon.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 
 import { Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { toggleSidebar } from "@/store/slices/sidebarSlice";
 const Sidebar = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const isCollapsed = useSelector<RootState>(
     (state) => state.sidebar.isCollapsed
   );
@@ -30,6 +32,7 @@ const Sidebar = () => {
         className=" p-2 h-[70px] flex justify-center cursor-pointer"
         onClick={() => {
           navigate("/");
+          dispatch(toggleSidebar());
         }}
       >
         <img src={isCollapsed ? logoIcon : logo} className="h-[50px]" />

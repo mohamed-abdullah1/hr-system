@@ -54,9 +54,9 @@ export function DataTable<TData, TValue>({
   const navigate = useNavigate();
   return (
     <div className="">
-      <div className="flex-col  lg:flex items-center py-4 ">
+      <div className="w-full flex-col  lg:flex lg:flex-row lg:justify-between  items-center py-4 relative">
         {/* search component */}
-        <div className="relative mb-4 lg:mb-0">
+        <div className="relative mb-4 lg:mb-0 lg:flex-1">
           <Input
             placeholder="Filter emails..."
             // value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
@@ -71,7 +71,7 @@ export function DataTable<TData, TValue>({
           />
         </div>
         {/* add & delete button */}
-        <div className="flex-col  lg:flex lg:flex-1 justify-end gap-2 ">
+        <div className="flex-col  lg:flex-row lg:flex lg:flex-1 justify-end gap-2 ">
           <Button
             onClick={() => {
               navigate("/employee/new");
