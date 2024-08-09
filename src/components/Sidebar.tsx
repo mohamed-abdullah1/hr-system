@@ -19,7 +19,7 @@ const Sidebar = () => {
   const isCollapsed = useSelector<RootState>(
     (state) => state.sidebar.isCollapsed
   );
-  console.log("🔥✨ ", { isCollapsed });
+  // console.log("🔥✨ ", { isCollapsed });
 
   return (
     <div
