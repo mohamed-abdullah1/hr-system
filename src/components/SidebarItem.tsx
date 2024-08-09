@@ -27,7 +27,9 @@ const SidebarItem: FC<Props> = ({ Icon, title, path, route }) => {
   const dispatch = useDispatch();
   const handleClick = () => {
     navigate(path || "/");
-    dispatch(toggleSidebar());
+    if (!isCollapsed) {
+      dispatch(toggleSidebar());
+    }
   };
   const childrenCount = route.children?.length ?? 0;
   return (

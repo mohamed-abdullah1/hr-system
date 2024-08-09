@@ -33,7 +33,9 @@ const Sidebar = () => {
         className=" p-2 h-[70px] flex justify-center cursor-pointer"
         onClick={() => {
           navigate("/");
-          dispatch(toggleSidebar());
+          if (!isCollapsed) {
+            dispatch(toggleSidebar());
+          }
         }}
       >
         <img src={isCollapsed ? logoIcon : logo} className="h-[50px]" />

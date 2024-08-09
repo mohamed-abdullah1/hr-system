@@ -1,11 +1,12 @@
 import { RouteObject } from "react-router-dom";
-import Dashboard from "@/pages/Dashboard";
+import Dashboard from "@/pages/Dashboard.page";
 import NotFound from "@/components/NotFound";
 import { ReactNode } from "react";
 import IconsRoutes from "./IconsRoutes";
-import Attendance from "@/pages/Attendance";
+import Attendance from "@/pages/Attendance.page";
 import Empoloyee from "@/pages/Employee";
 import EmployeeAdd from "@/pages/Employee/add";
+import Settings from "@/pages/Settings.page";
 
 export type RoutesProps = RouteObject & {
   title?: string;
@@ -87,7 +88,7 @@ const routes: RoutesProps[] = [
   },
   {
     path: "/settings",
-    element: <Attendance />,
+    element: <Settings />,
     title: "Settings",
     Icon: IconsRoutes["Settings"],
     ignoreInSideBar: false,

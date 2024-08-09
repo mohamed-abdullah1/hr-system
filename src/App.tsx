@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import routes from "./routes/index";
 import LayoutWrapper from "@/components/LayoutWrapper";
-import LoginPage from "@/pages/Login";
+import LoginPage from "@/pages/Login.page";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const AppRoutes = () => {
