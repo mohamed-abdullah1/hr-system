@@ -128,7 +128,9 @@ const Topbar = () => {
                   <p className="text-sm lg:text-sm font-bold">
                     Moh@med Elsayed
                   </p>
-                  <p className="text-sm lg:text-sm ">Admin, Company 1</p>
+                  <p className="text-xs lg:text-xs text-gray-500">
+                    Admin, Company 1
+                  </p>
                 </div>
                 <ChevronDown className="text-gray-500" />
               </Button>

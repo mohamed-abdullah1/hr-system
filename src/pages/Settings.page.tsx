@@ -16,7 +16,7 @@ const Settings = () => {
           <CardDescription>show all settings</CardDescription>
         </CardHeader>
         <CardContent>
-          <Tabs defaultValue="account" className="w-full min-h-10">
+          <Tabs defaultValue="general" className="w-full min-h-10">
             <TabsList className=" h-28   w-full overflow-scroll flex flex-wrap lg:grid lg:h-fit lg:grid-cols-7 ">
               <TabsTrigger value="general">General</TabsTrigger>
               <TabsTrigger value="websiteFooter">WebsiteFooter</TabsTrigger>

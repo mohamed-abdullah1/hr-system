@@ -23,6 +23,11 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -81,12 +86,29 @@ export function DataTable<TData, TValue>({
           >
             Add new employee
           </Button>
-          <Button
-            className="mb-4 lg:mb-0 w-full lg:w-fit"
-            variant={"destructive"}
-          >
-            Delete Selected Rows
-          </Button>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                className="mb-4 lg:mb-0 w-full lg:w-fit"
+                variant={"destructive"}
+              >
+                Delete Selected Rows
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-80">
+              <div className="grid gap-4">
+                <div className="space-y-2">
+                  <h4 className="font-medium text-md  leading-none">
+                    Are you sure to delete these rows?
+                  </h4>
+                </div>
+                <div className="flex justify-end gap-4">
+                  <Button variant={"outline"}>Cancel</Button>
+                  <Button variant={"destructive"}>Delete</Button>
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
       </div>
       <div className="rounded-md border">
