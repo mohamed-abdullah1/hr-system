@@ -3,7 +3,6 @@ import Dashboard from "@/pages/Dashboard.page";
 import NotFound from "@/components/NotFound";
 import { ReactNode } from "react";
 import IconsRoutes from "./IconsRoutes";
-import Attendance from "@/pages/Attendance.page";
 import Empoloyee from "@/pages/Employee";
 import EmployeeAdd from "@/pages/Employee/add";
 import Settings from "@/pages/Settings.page";
